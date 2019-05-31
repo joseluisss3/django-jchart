@@ -63,18 +63,38 @@ def DataSet(**kwargs):
 
     result = dict(**kwargs)
 
-    if 'color' in kwargs:
-        color = kwargs['color']
+    color =  kwargs.get('color')
+    if color:
 
-        assert_color(color)
-
-        set_colors = dict(
-            backgroundColor=rgba(*color, a=0.2),
-            pointBackgroundColor=rgba(*color, a=0.5),
-            borderColor=rgba(*color, a=0.5),
-            pointBorderColor=rgba(*color, a=1),
-            pointStrokeColor=rgba(*color, a=1),
-        )
+        if isinstance(color[0], list):
+            backgroundColorList = []
+            pointBackgroundList = []
+            borderColorList = []
+            pointBorderColorList = []
+            pointStrokeColorList = []
+            for c in color:
+                assert_color(c)
+                backgroundColorList.append(rgba(*c, a=0.2))
+                pointBackgroundList.append(rgba(*c, a=0.5))
+                borderColorList.append(rgba(*c, a=0.5))
+                pointBorderColorList.append(rgba(*c, a=1))
+                pointStrokeColorList.append(rgba(*c, a=1))
+                set_colors = dict(
+                    backgroundColor=backgroundColorList,
+                    pointBackgroundColor=pointBackgroundList,
+                    borderColor=borderColorList,
+                    pointBorderColor=pointBorderColorList,
+                    pointStrokeColor=pointStrokeColorList,
+                )
+        else:
+            assert_color(color)
+            set_colors = dict(
+                backgroundColor=rgba(*color, a=0.2),
+                pointBackgroundColor=rgba(*color, a=0.5),
+                borderColor=rgba(*color, a=0.5),
+                pointBorderColor=rgba(*color, a=1),
+                pointStrokeColor=rgba(*color, a=1),
+            )
         result.update(**set_colors)
 
     return result
