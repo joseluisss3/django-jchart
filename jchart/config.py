@@ -158,7 +158,7 @@ def InteractionModes(**kwargs):
 
 
 def Animation(**kwargs):
-    allowed_keys = {'duration', 'easing'}
+    allowed_keys = {'duration', 'easing', 'animationRotate', 'animationScale'}
 
     assert_keys('Animation', allowed_keys, kwargs)
 
