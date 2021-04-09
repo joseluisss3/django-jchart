@@ -74,9 +74,9 @@ def DataSet(**kwargs):
             pointStrokeColorList = []
             for c in color:
                 assert_color(c)
-                backgroundColorList.append(rgba(*c, a=0.2))
+                backgroundColorList.append(rgba(*c, a=0.7))
                 pointBackgroundList.append(rgba(*c, a=0.5))
-                borderColorList.append(rgba(*c, a=0.5))
+                borderColorList.append(rgba(*c, a=0.7))
                 pointBorderColorList.append(rgba(*c, a=1))
                 pointStrokeColorList.append(rgba(*c, a=1))
                 set_colors = dict(
@@ -89,9 +89,9 @@ def DataSet(**kwargs):
         else:
             assert_color(color)
             set_colors = dict(
-                backgroundColor=rgba(*color, a=0.2),
+                backgroundColor=rgba(*color, a=0.7),
                 pointBackgroundColor=rgba(*color, a=0.5),
-                borderColor=rgba(*color, a=0.5),
+                borderColor=rgba(*color, a=0.7),
                 pointBorderColor=rgba(*color, a=1),
                 pointStrokeColor=rgba(*color, a=1),
             )
