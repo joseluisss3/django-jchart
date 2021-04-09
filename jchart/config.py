@@ -23,7 +23,7 @@ def Axes(**kwargs):
 
 def ScaleLabel(**kwargs):
     allowed_keys = {'display', 'labelString', 'fontColor', 'fontFamily', 'fontSize',
-                    'fontStyle'}
+                    'fontStyle', 'lineHeight'}
 
     assert_keys('ScaleLabel', allowed_keys, kwargs)
 
